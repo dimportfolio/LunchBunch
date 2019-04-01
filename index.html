@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Lunch Bunch!</title>
+  </head>
+  <body>
+    <p>MVP</p>
+    <div class="jumbotron bg-dark text-light text-center">
+      <h2>MVP for Lunch Bunch</h2>
+    </div>
+    <div class="container">
+      <div class="card mb-4">
+        <div class="card-header">Search</div>
+        <div class="card-body">
+          <form>
+            <label for="ingredient">Enter search item</label>
+            <input type="text" class="form-control mb-2" id="ingredient" />
+            <label for="filter">Dietary Restriction:</label>
+            <input type="text" class="form-control mb-2" id="filter" />
+            <label for="exclude-ingredient">Exclude any ingredient:</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="exclude-ingredient"
+            />
+            <button id="search-recipe" class="btn btn-success btn-block">
+              Search Recipes
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Search Results</div>
+
+        <div id="main-recipe-body" class="card-body">
+          <!-- Render recipes here dynamically using JavaScript in cards. Recipe pic, some catchy text and button to go to that recipe -->
+        </div>
+      </div>
+    </div>
+    <script src="./assets/JS/script.js"></script>
+  </body>
+</html>
