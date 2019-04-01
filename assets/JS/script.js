@@ -62,22 +62,21 @@ $(document).ready(function() {
 
     var idRecipe = $(this).attr('id');
 
-    function displayRecipe() {
-      var queryUrl2 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idRecipe}/information`;
-      $.ajax({
-        type: 'GET',
-        url: queryUrl2,
-        contentType: 'application/json',
-        xhrFields: {
-          withCredentials: false
-        },
-        headers: {
-          'X-RapidAPI-Key': '36b1955be7msh1566b339f906515p10b495jsn27ecc72ce407'
-        }
-      }).then(function(res) {
-        console.log(res);
-      });
-    }
+    var queryUrl2 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idRecipe}/information`;
+    $.ajax({
+      type: 'GET',
+      url: queryUrl2,
+      contentType: 'application/json',
+      xhrFields: {
+        withCredentials: false
+      },
+      headers: {
+        'X-RapidAPI-Key': '36b1955be7msh1566b339f906515p10b495jsn27ecc72ce407'
+      }
+    }).then(function(res) {
+      console.log(res);
+    });
   }
+
   $(document).on('click', '.recipeInd', displayRecipe);
 });
