@@ -64,6 +64,10 @@ $(document).ready(function() {
   function displayRecipe() {
     console.log($(this).attr('id'));
 
+    //everything goes away on the page
+
+    $('#main-recipe-body').html('');
+
     var idRecipe = $(this).attr('id');
 
     var queryUrl2 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${idRecipe}/information`;
@@ -78,10 +82,11 @@ $(document).ready(function() {
         'X-RapidAPI-Key': '36b1955be7msh1566b339f906515p10b495jsn27ecc72ce407'
       }
     }).then(function(res) {
-      // in response, get the list of ingredients and store it in an object?
+      // in response, get the list of ingredients and store it in an array
       console.log(res);
       var ingredients = [];
       var ingredientArray = res.extendedIngredients;
+
       var k = 0;
       while (k < ingredientArray.length) {
         ingredients.push(ingredientArray[k].name);
@@ -89,11 +94,32 @@ $(document).ready(function() {
       }
 
       console.log(ingredients);
-      //return ingredients;
+
+      // return ingredient array as an object
+
+      var j = 0;
+      do {
+        var queryUrl3 = `https://nutritionix-api.p.rapidapi.com/v1_1/search/${
+          ingredients[j]
+        }?fields=item_name%2Citem_id%2Cnf_calories%2Cnf_total_fat`;
+
+        $.ajax({
+          type: 'GET',
+          url: queryUrl3,
+          xhrFields: {
+            withCredentials: false
+          },
+          headers: {
+            'X-RapidAPI-Key':
+              '916c9284bbmshc061203e3ff51aep131c78jsnc7e6f9f1129f'
+          }
+        }).then(function(response) {
+          console.log(response);
+        });
+        j++;
+      } while (j < ingredients.length);
     });
   }
 
   $(document).on('click', '.recipeInd', displayRecipe);
-
-  // Take care of nutritionix API now
 });
