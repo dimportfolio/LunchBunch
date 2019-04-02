@@ -1,5 +1,8 @@
 $(document).ready(function() {
+  var totalCalories = 0;
+
   // when user clicks the search button:
+
   $('#search-recipe').on('click', function() {
     event.preventDefault();
 
@@ -62,6 +65,9 @@ $(document).ready(function() {
   // AJAX for getting individual recipe's ingredients
 
   function displayRecipe() {
+    var totalCalories = 0;
+    var recipeArray = [];
+
     console.log($(this).attr('id'));
 
     //everything goes away on the page
@@ -95,27 +101,60 @@ $(document).ready(function() {
 
       console.log(ingredients);
 
-      // return ingredient array as an object
+      // nutritionix API stuff
 
       var j = 0;
       do {
-        var queryUrl3 = `https://nutritionix-api.p.rapidapi.com/v1_1/search/${
+        var queryUrl3 = `https://trackapi.nutritionix.com/v2/search/instant?query=${
           ingredients[j]
-        }?fields=item_name%2Citem_id%2Cnf_calories%2Cnf_total_fat`;
+        }`;
+        // console.log(queryUrl3);
 
-        $.ajax({
+        jqhxr = $.ajax({
           type: 'GET',
           url: queryUrl3,
           xhrFields: {
             withCredentials: false
           },
           headers: {
-            'X-RapidAPI-Key':
-              '916c9284bbmshc061203e3ff51aep131c78jsnc7e6f9f1129f'
+            'x-app-id': '1729e752',
+            'x-app-key': '3196a9532a2cb72bca7c29cf757f3675'
+            // 'X-RapidAPI-Key':
+            //   '7193e814a8msh0ff23f964bcb449p10ea3fjsnb22ff49fd87d'
           }
-        }).then(function(response) {
-          console.log(response);
         });
+
+        jqhxr.done(function(res) {
+          console.log(res.branded[0].nf_calories);
+          totalCalories += res.branded[0].nf_calories;
+          console.log(totalCalories);
+          $('#test').nutritionLabel({
+            showItemName: false,
+            valueCalories: totalCalories
+          });
+        });
+
+        // .then(function(response) {
+        //   console.log(response);
+
+        //   recipeArray.push(response);
+        //   //var ii = 0;
+        //   //console.log(recipeArray);
+
+        //   //generate food label here
+
+        //   //totalCalories +=
+
+        //   // $('#test').nutritionLabel({
+        //   //   showServingUnitQuantity: false,
+        //   //   itemName: `${response.branded[0].food_name}`,
+        //   //   decimalPlacesForQuantityTextbox: 2,
+        //   //   showPolyFat: false,
+        //   //   showMonoFat: false,
+        //   //   valueCalories: `${response.branded[0].nf_calories}`
+        //   // });
+        // });
+
         j++;
       } while (j < ingredients.length);
     });
