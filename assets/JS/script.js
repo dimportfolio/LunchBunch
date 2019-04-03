@@ -47,7 +47,7 @@ $(document).ready(function() {
                              <p class="card-text">${title}</p>
                              <a class="btn btn-primary text-light btn-block recipeInd" id=${
                                response.results[i].id
-                             }>Check Out Full Recipe!</a>
+                             }>Check Out Recipe nutrition!</a>
                          </div>
                      </div>`;
 
