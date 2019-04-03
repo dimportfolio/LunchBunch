@@ -4,3 +4,24 @@
   width: 100vw;
   opacity: 0.7;
 }
+
+.heading h2 {
+  opacity: 1;
+  color: white;
+  font-weight: 800;
+  display: inline-block;
+  text-align: center;
+  margin-top: 45vh;
+  margin-left: 40vw;
+  -webkit-animation: fadein 2s;
+  animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
