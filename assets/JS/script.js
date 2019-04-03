@@ -54,6 +54,18 @@ $(document).ready(function() {
         $('#main-recipe-body').append(html);
         i++;
       }
+
+      let hash = '#main-recipe-body';
+      $('html, body').animate(
+        {
+          scrollTop: $(hash).offset().top
+        },
+        800,
+        function() {
+          window.location.hash = hash;
+        }
+      );
+
       // empty out the form fields
 
       $('#ingredient').val('');
