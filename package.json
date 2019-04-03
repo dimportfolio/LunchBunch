@@ -1,0 +1,23 @@
+{
+  "name": "lunchbunch",
+  "version": "1.0.0",
+  "description": "Final goal of the LunchBunch App is for users to be able to join a workplace \"common kitchen\".",
+  "main": "index.js",
+  "dependencies": {
+    "nutrition-label-jquery-plugin": "^9.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mannanq/LunchBunch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mannanq/LunchBunch/issues"
+  },
+  "homepage": "https://github.com/mannanq/LunchBunch#readme"
+}
