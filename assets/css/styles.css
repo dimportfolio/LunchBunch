@@ -6,15 +6,24 @@
 }
 
 .heading h2 {
+  font-size: 1rem;
   opacity: 1;
   color: white;
   font-weight: 800;
+  font-size: 2rem;
   display: inline-block;
   text-align: center;
   margin-top: 45vh;
-  margin-left: 40vw;
-  -webkit-animation: fadein 2s;
+  margin-left: 25vw;
+  -webkit-animation: fadein 3s;
   animation: fadein 3s;
+}
+
+@media (min-width: 370px) {
+  .heading h2 {
+    margin-left: 35vw;
+    font-size: 4rem;
+  }
 }
 
 @keyframes fadein {
